@@ -1,6 +1,3 @@
-
-**Template for NestJs projects with TypeScript and TypeORM**
-
 ## Technologies
 
 - [Typescript](https://www.typescriptlang.org/)
