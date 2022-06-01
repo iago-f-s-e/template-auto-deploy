@@ -2,7 +2,7 @@
   "name": "sync-context",
   "version": "1.0.0",
   "main": "src/main.ts",
-  "repository": "",
+  "repository": "https://github.com/iago-f-s-e/template-sync-context.git",
   "author": "iago-f-s-e <iago.fagundes@outlook.com>",
   "license": "MIT",
   "scripts": {
