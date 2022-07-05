@@ -1,20 +1,6 @@
 import axios, { AxiosError } from 'axios';
 import * as Settings from '@src/server/settings';
-import {
-  BadRequestException,
-  ConflictException,
-  NotFoundException,
-  RequestTimeoutException,
-  HttpStatus,
-  BadGatewayException,
-  ForbiddenException,
-  GatewayTimeoutException,
-  MethodNotAllowedException,
-  NotAcceptableException,
-  PayloadTooLargeException,
-  UnauthorizedException,
-  InternalServerErrorException
-} from '@nestjs/common';
+import * as Nest from '@nestjs/common';
 
 type AppError = {
   message: string;
@@ -24,41 +10,41 @@ type AppError = {
 
 function transporterErrorInstance(error?: AppError) {
   switch (error?.statusCode) {
-    case HttpStatus.BAD_REQUEST:
-      throw new BadRequestException(error.message);
+    case Nest.HttpStatus.BAD_REQUEST:
+      throw new Nest.BadRequestException(error.message);
 
-    case HttpStatus.NOT_FOUND:
-      throw new NotFoundException(error.message);
+    case Nest.HttpStatus.NOT_FOUND:
+      throw new Nest.NotFoundException(error.message);
 
-    case HttpStatus.REQUEST_TIMEOUT:
-      throw new RequestTimeoutException(error.message);
+    case Nest.HttpStatus.REQUEST_TIMEOUT:
+      throw new Nest.RequestTimeoutException(error.message);
 
-    case HttpStatus.CONFLICT:
-      throw new ConflictException(error.message);
+    case Nest.HttpStatus.CONFLICT:
+      throw new Nest.ConflictException(error.message);
 
-    case HttpStatus.BAD_GATEWAY:
-      throw new BadGatewayException(error.message);
+    case Nest.HttpStatus.BAD_GATEWAY:
+      throw new Nest.BadGatewayException(error.message);
 
-    case HttpStatus.FORBIDDEN:
-      throw new ForbiddenException(error.message);
+    case Nest.HttpStatus.FORBIDDEN:
+      throw new Nest.ForbiddenException(error.message);
 
-    case HttpStatus.GATEWAY_TIMEOUT:
-      throw new GatewayTimeoutException(error.message);
+    case Nest.HttpStatus.GATEWAY_TIMEOUT:
+      throw new Nest.GatewayTimeoutException(error.message);
 
-    case HttpStatus.METHOD_NOT_ALLOWED:
-      throw new MethodNotAllowedException(error.message);
+    case Nest.HttpStatus.METHOD_NOT_ALLOWED:
+      throw new Nest.MethodNotAllowedException(error.message);
 
-    case HttpStatus.NOT_ACCEPTABLE:
-      throw new NotAcceptableException(error.message);
+    case Nest.HttpStatus.NOT_ACCEPTABLE:
+      throw new Nest.NotAcceptableException(error.message);
 
-    case HttpStatus.PAYLOAD_TOO_LARGE:
-      throw new PayloadTooLargeException(error.message);
+    case Nest.HttpStatus.PAYLOAD_TOO_LARGE:
+      throw new Nest.PayloadTooLargeException(error.message);
 
-    case HttpStatus.UNAUTHORIZED:
-      throw new UnauthorizedException(error.message);
+    case Nest.HttpStatus.UNAUTHORIZED:
+      throw new Nest.UnauthorizedException(error.message);
 
     default:
-      throw new InternalServerErrorException(error?.message);
+      throw new Nest.InternalServerErrorException(error?.message);
   }
 }
 

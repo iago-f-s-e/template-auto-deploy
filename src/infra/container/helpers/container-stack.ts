@@ -1,5 +1,6 @@
 import { keys } from '@src/domain/constants';
 import { RedisService } from '@src/infra/redis/services';
+import * as Settings from '@src/server/settings';
 
 export function containerStack(redisService = new RedisService()): {
   push: () => Promise<void>;
@@ -9,9 +10,9 @@ export function containerStack(redisService = new RedisService()): {
   async function get(): Promise<string[]> {
     const cache = await redisService.get<string[]>(keys.CONTAINER_STACK);
 
-    if (!cache) return ['pre-venda'];
+    if (!cache) return [Settings.CONTEXT_PREFIX];
 
-    return [...cache, 'pre-venda'];
+    return [...cache, Settings.CONTEXT_PREFIX];
   }
 
   async function insert(): Promise<void> {
@@ -23,7 +24,7 @@ export function containerStack(redisService = new RedisService()): {
   async function remove(): Promise<void> {
     const stack = await get();
 
-    const newStack = stack.filter(container => container !== 'pre-venda');
+    const newStack = stack.filter(container => container !== Settings.CONTEXT_PREFIX);
 
     await redisService.set(keys.CONTAINER_STACK, newStack);
   }

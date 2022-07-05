@@ -1,5 +1,5 @@
 {
-  "name": "sync-context",
+  "name": "template-with-auto-deploy",
   "version": "1.0.0",
   "main": "src/main.ts",
   "repository": "https://github.com/iago-f-s-e/template-sync-context.git",
@@ -42,7 +42,6 @@
     "helmet": "^5.1.0",
     "ioredis": "^5.0.5",
     "kafkajs": "^2.0.1",
-    "mssql": "^8.1.1",
     "redis": "^4.1.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
