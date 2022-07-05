@@ -2,7 +2,7 @@
   "name": "template-with-auto-deploy",
   "version": "1.0.0",
   "main": "src/main.ts",
-  "repository": "https://github.com/iago-f-s-e/template-sync-context.git",
+  "repository": "https://github.com/iago-f-s-e/template-nest-with-auto-deploy.git",
   "author": "iago-f-s-e <iago.fagundes@outlook.com>",
   "license": "MIT",
   "scripts": {
