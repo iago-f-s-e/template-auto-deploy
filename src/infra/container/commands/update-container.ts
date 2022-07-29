@@ -6,7 +6,7 @@ import * as Settings from '@src/server/settings';
 const asyncExec = promisify(exec);
 
 export function updateContainer(): AsyncExec {
-  const command = `git pull ${Settings.CONTAINER_LOCATION}`;
+  const command = `git pull ${Settings.REPOSITORY_LOCATION}`;
 
   return asyncExec(command);
 }

@@ -10,5 +10,3 @@ services:
       - .:/home/node/api
     extra_hosts:
       - "host.docker.internal:172.17.0.1"
-      - "host.redis.internal:172.17.0.1"
-      - "host.mssql.internal:172.17.0.1"

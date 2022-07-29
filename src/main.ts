@@ -1,5 +1,5 @@
 import 'dotenv/config';
 
-import { bootstrap } from './server';
+import server from './server';
 
-bootstrap().catch(err => console.error(err));
+server.bootstrap();

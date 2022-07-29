@@ -1,10 +1,11 @@
+import { ICacheService } from '@src/domain/interfaces';
 import { redisConnection } from '../config';
-import { CachePayload, HasAndDelResponse } from '../types';
+import { HasAndDelResponse } from '../types';
 
-export class RedisService {
+export class RedisService implements ICacheService {
   constructor(private readonly cache = redisConnection) {}
 
-  private toSet(payload: CachePayload): string {
+  private toSet<T>(payload: T): string {
     const isString = typeof payload === 'string';
 
     if (isString) return payload;
@@ -20,14 +21,14 @@ export class RedisService {
     return this.cache.del(keys) as Promise<HasAndDelResponse>;
   }
 
-  public set(key: string, payload: CachePayload): Promise<'OK' | null> {
+  public set<T>(key: string, payload: T): Promise<'OK' | null> {
     return this.cache.set(key, this.toSet(payload));
   }
 
-  public async get<T = CachePayload>(key: string): Promise<T | undefined> {
+  public async get<T>(key: string): Promise<T | null> {
     const cache = await this.cache.get(key);
 
-    if (!cache) return;
+    if (!cache) return null;
 
     return this.toGet<T>(cache);
   }
@@ -36,7 +37,7 @@ export class RedisService {
     return this.cache.exists(key) as Promise<HasAndDelResponse>;
   }
 
-  public async update(key: string, payload: CachePayload): Promise<'OK' | null> {
+  public async update<T>(key: string, payload: T): Promise<'OK' | null> {
     await this.del(key);
 
     return this.set(key, payload);

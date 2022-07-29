@@ -5,7 +5,7 @@ import { DataSource } from 'typeorm';
 import * as Settings from '@src/server/settings';
 
 const dataSource = new DataSource({
-  type: 'mssql',
+  type: 'postgres',
   host: 'localhost',
   migrationsTableName: 'seeds_migrations',
   port: Settings.DB_PORT,
@@ -14,11 +14,7 @@ const dataSource = new DataSource({
   password: Settings.DB_PASS,
   logging: Settings.DB_LOGGING,
   entities: [Settings.DB_PATH_ENTITIES],
-  migrations: [Settings.DB_PATH_SEEDS],
-  options: {
-    connectTimeout: Settings.DB_TIMEOUT,
-    encrypt: Settings.DB_ENCRYPT
-  }
+  migrations: [Settings.DB_PATH_SEEDS]
 });
 
 export default dataSource;
